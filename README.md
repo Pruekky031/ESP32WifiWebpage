@@ -1,5 +1,5 @@
 
-# ESP32WifiWebpage
+# ESP32 Wifi-Setup Webpage
 
 A simple web-based WiFi configuration portal for ESP32. It allows you to scan and connect to WiFi networks via a mobile-friendly browser interface.
 
