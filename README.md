@@ -1,58 +1,38 @@
-﻿# ESP32WifiWebpage
-🌐 ESP32 Modern WiFi Setup Manager
-A sleek and responsive WiFi Captive Portal / Setup Manager for the ESP32. This project allows users to configure WiFi credentials via a modern web interface without hardcoding credentials into the firmware.
 
-✨ Features
-Dual Mode (AP + STA): Creates its own Access Point for configuration while maintaining Station capabilities.
+# ESP32WifiWebpage
 
-Modern Web UI: Features a dark-themed, mobile-responsive UI inspired by modern design trends.
+A simple web-based WiFi configuration portal for ESP32. It allows you to scan and connect to WiFi networks via a mobile-friendly browser interface.
 
-Real-time WiFi Scanning: Scan for available networks and display them instantly.
+# Features
 
-Signal Strength Visualization: Displays RSSI (signal strength) using color-coded bars (Green to Red).
+AP Mode: Creates a setup hotspot (ESP32_Setup).
 
-Secure & Open Support: Handles both password-protected (WPA2) and open networks seamlessly.
+WiFi Scan: Lists nearby networks with signal strength (RSSI).
 
-Asynchronous Communication: Uses JavaScript Fetch API and JSON for a smooth, no-reload user experience.
+Web UI: Modern Dark Mode interface built with HTML/CSS/JS.
 
-🛠 How It Works
-Access Point Setup: Upon booting, the ESP32 broadcasts an SSID named ESP32_Setup (Password: 12345678).
+JSON API: Uses /scan and /connect endpoints for data handling.
 
-Web Server: Runs a server on Port 80 to host the configuration page.
+# How to Use
 
-API Endpoints:
+Upload the code to your ESP32.
 
-/ : Serves the main HTML/CSS/JS dashboard.
+Connect to WiFi: ESP32_Setup (Password: 12345678).
 
-/scan : Triggers a WiFi scan and returns the list of nearby networks as a JSON object.
+Open browser to: 192.168.4.1.
 
-/connect : Receives the selected SSID and Password via POST request to initiate the connection.
+Select your network, enter the password, and connect.
 
-Auto-Transition: Once the ESP32 successfully connects to the target network, it can be programmed to shut down the Access Point to save power.
+# API Endpoints
 
-🚀 Getting Started
-Copy the code into your Arduino IDE.
+GET / : Serves the configuration page.
 
-Ensure you have the ESP32 board library installed.
+GET /scan : Returns a list of available WiFi networks in JSON.
 
-Select your board (e.g., DOIT ESP32 DEVKIT V1) and click Upload.
+POST /connect : Receives ssid and pass to establish a connection.
 
-On your phone or PC, connect to the WiFi network: "ESP32_Setup".
+# Requirements
 
-Open your browser and navigate to 192.168.4.1.
+ESP32 Board
 
-Select your WiFi, enter the password, and click Connect.
-
-📊 Technical Highlights
-Memory Efficiency: The HTML content is stored in PROGMEM to preserve RAM for other application logic.
-
-CSS Animations: Includes a native CSS loader and smooth transition effects for cards.
-
-JSON Integration: Uses a structured data format for communication between the frontend and backend, making it easy to expand for more complex IoT projects.
-
-📝 Requirements
-Hardware: Any ESP32 Development Board.
-
-Libraries: * WiFi.h (Standard ESP32 library)
-
-WebServer.h (Standard ESP32 library)
+Arduino IDE with ESP32 core installed.
